@@ -20,4 +20,14 @@ defmodule Nesti.Schema do
       defoverridable __config__: 0
     end
   end
+
+  def take_equal_keys(%schema{} = data) do
+    if Nesti.is_schema?(schema) do
+      Map.take(data, schema.equal_keys)
+    else
+      %{}
+    end
+  end
+
+  def take_equal_keys(_), do: %{}
 end
